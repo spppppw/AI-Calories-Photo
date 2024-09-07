@@ -1,54 +1,39 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Личный кабинет — Анализ питания</title>
-  <link rel="stylesheet" href="css/style.css">
-  <meta name="description" content="Управляйте своим профилем, анализируйте свои приемы пищи и ведите учет питания в личном кабинете.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет — Анализ питания</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="description" content="Управляйте своим профилем, анализируйте свои приемы пищи и ведите учет питания в личном кабинете.">
 </head>
 <body>
-  <header>
-    <nav class="nav-main">
-      <ul>
-        <li><a href="#profile">Профиль</a></li>
-        <li><a href="#calendar">Календарь</a></li>
-        <li><a href="#history">История</a></li>
-        <li><a href="index.html" onclick="logout()">Выйти</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+        <nav class="nav-main">
+            <ul>
+                <li><a href="dashboard.html">Личный кабинет</a></li>
+                <li><a href="index.html" onclick="logout()">Выйти</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <main>
-    <section id="profile" class="profile-container">
-      <h2>Ваш профиль</h2>
-      <div class="profile-details">
-        <img id="profile-avatar" src="img/avatar.png" alt="Аватар пользователя">
-        <p id="profile-name">Имя пользователя</p>
-        <p id="profile-email">email@example.com</p>
-        <button onclick="editProfile()">Редактировать профиль</button>
-      </div>
-    </section>
+    <main class="profile-container">
+        <h2>Ваш профиль</h2>
+        <div class="profile-details">
+            <img src="img/avatar.png" alt="Аватар">
+            <p>Email: <span id="profile-email"></span></p>
+        </div>
+        <button class="btn-primary" onclick="analyzeFood()">Загрузить фото еды</button>
+        <input type="file" id="food-photo" accept="image/*" style="display: none;">
+        <div id="food-name"></div>
+        <div id="food-calories"></div>
+        <div id="food-nutrients"></div>
+    </main>
 
-    <section id="calendar" class="calendar-container">
-      <h2>Календарь приема пищи</h2>
-      <div id="calendar-grid">
-        <!-- Календарь будет загружен динамически через JavaScript -->
-      </div>
-    </section>
+    <footer>
+        <p>© 2024 Анализ питания. Все права защищены.</p>
+    </footer>
 
-    <section id="history" class="history-container">
-      <h2>История приема пищи</h2>
-      <div id="food-history">
-        <!-- История будет загружена динамически через JavaScript -->
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2024 Анализ питания. Все права защищены.</p>
-  </footer>
-
-  <script src="js/app.js"></script>
+    <script type="module" src="app.js"></script>
 </body>
 </html>
