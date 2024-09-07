@@ -1,20 +1,20 @@
-// Инициализация Firebase
+// Firebase инициализация
 var firebaseConfig = {
-    apiKey: "YOUR_FIREBASE_API_KEY",
-    authDomain: "YOUR_FIREBASE_PROJECT_ID.firebaseapp.com",
-    databaseURL: "https://YOUR_FIREBASE_PROJECT_ID.firebaseio.com",
-    projectId: "YOUR_FIREBASE_PROJECT_ID",
-    storageBucket: "YOUR_FIREBASE_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_FIREBASE_MESSAGING_SENDER_ID",
-    appId: "YOUR_FIREBASE_APP_ID"
+    apiKey: "AIzaSyARs75h_J3m8WU73vggq4xn_c1c6IFYStk",
+    authDomain: "ai-calories-photo.firebaseapp.com",
+    projectId: "ai-calories-photo",
+    storageBucket: "ai-calories-photo.appspot.com",
+    messagingSenderId: "765560200799",
+    appId: "1:765560200799:web:008f2d2724d3c8f81305ea",
+    measurementId: "G-6T1GYKQ7QT"
   };
   firebase.initializeApp(firebaseConfig);
   
-  // Регистрация пользователя
+  // Функция регистрации
   function register() {
-    var name = document.getElementById("register-name").value;
-    var email = document.getElementById("register-email").value;
-    var password = document.getElementById("register-password").value;
+    var name = document.getElementById("name-register").value;
+    var email = document.getElementById("email-register").value;
+    var password = document.getElementById("password-register").value;
   
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
@@ -25,101 +25,65 @@ var firebaseConfig = {
       })
       .then(() => {
         alert("Регистрация прошла успешно!");
-        showProfile();
+        window.location.href = 'dashboard.html'; // Переход в ЛК
       })
       .catch((error) => {
         alert("Ошибка регистрации: " + error.message);
       });
   }
   
-  // Вход пользователя
+  // Функция входа
   function login() {
-    var email = document.getElementById("login-email").value;
-    var password = document.getElementById("login-password").value;
+    var email = document.getElementById("email-login").value;
+    var password = document.getElementById("password-login").value;
   
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
-        alert("Вы вошли в систему!");
-        showProfile();
+        alert("Вы успешно вошли в систему!");
+        window.location.href = 'dashboard.html'; // Переход в ЛК
       })
       .catch((error) => {
         alert("Ошибка входа: " + error.message);
       });
   }
   
-  // Выход пользователя
+  // Выход из системы
   function logout() {
     firebase.auth().signOut().then(() => {
       alert("Вы вышли из системы.");
-      document.getElementById("auth-section").classList.remove("hidden");
-      document.getElementById("profile-section").classList.add("hidden");
+      window.location.href = 'index.html'; // Возврат на страницу входа
     });
   }
   
-  // Показать профиль пользователя
-  function showProfile() {
+  // Отображение профиля в ЛК
+  function displayProfile() {
     var user = firebase.auth().currentUser;
     if (user) {
-      document.getElementById("auth-section").classList.add("hidden");
-      document.getElementById("profile-section").classList.remove("hidden");
-      document.getElementById("profile-name").innerText = "Имя: " + user.displayName;
-      document.getElementById("profile-email").innerText = "Email: " + user.email;
-      document.getElementById("profile-avatar").src = user.photoURL || "https://via.placeholder.com/100";
+      document.getElementById("profile-name").innerText = user.displayName;
+      document.getElementById("profile-email").innerText = user.email;
+      document.getElementById("profile-avatar").src = user.photoURL || 'img/avatar.png'; // Placeholder если нет фото
     }
   }
   
-  // Переключение между формами входа и регистрации
-  function toggleAuth() {
-    document.getElementById("register-form").classList.toggle("hidden");
-    document.getElementById("login-form").classList.toggle("hidden");
-  }
-  
-  // Авторизация через Google
-  function loginWithGoogle() {
-    var provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider)
-      .then((result) => {
-        alert("Вы вошли через Google!");
-        showProfile();
-      })
-      .catch((error) => {
-        alert("Ошибка авторизации через Google: " + error.message);
-      });
-  }
-  
-  // Авторизация через Apple
-  function loginWithApple() {
-    var provider = new firebase.auth.OAuthProvider('apple.com');
-    firebase.auth().signInWithPopup(provider)
-      .then((result) => {
-        alert("Вы вошли через Apple!");
-        showProfile();
-      })
-      .catch((error) => {
-        alert("Ошибка авторизации через Apple: " + error.message);
-      });
-  }
-  
-  // Загрузка и анализ фото еды
+  // Загрузка фото еды и анализ через Clarifai API
   function analyzeFood() {
     var fileInput = document.getElementById("food-photo");
     var file = fileInput.files[0];
   
     if (!file) {
-      alert("Загрузите фото еды!");
+      alert("Пожалуйста, загрузите фото еды!");
       return;
     }
   
     var reader = new FileReader();
-    reader.onloadend = function() {
+    reader.onloadend = function () {
       var base64Image = reader.result.split(',')[1];
   
-      // Используем Clarifai API для анализа еды
-      var apiKey = 'YOUR_CLARIFAI_API_KEY';
+      // Отправка изображения в Clarifai API
       fetch('https://api.clarifai.com/v2/models/food-item-recognition/outputs', {
         method: 'POST',
         headers: {
-          'Authorization': 'Key ' + apiKey,
+          'Authorization': 'Key 10a38d2f1c934f129544e30dfd1a24b8', // Твой Clarifai ключ
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
@@ -138,59 +102,68 @@ var firebaseConfig = {
       .then(data => {
         var foodName = data.outputs[0].data.concepts[0].name;
         document.getElementById("food-name").innerText = "Еда: " + foodName;
+  
+        // Получение данных о калориях через FatSecret API
         fetchFatSecretData(foodName);
       })
       .catch(error => {
         console.error("Ошибка анализа изображения:", error);
-        alert("Не удалось проанализировать изображение. Попробуйте ещё раз.");
+        alert("Не удалось проанализировать изображение.");
       });
     };
-  
     reader.readAsDataURL(file);
   }
   
-  // Получение информации о калориях и КБЖУ через FatSecret API
-  function fetchFatSecretData(foodName) {
-    var apiKey = 'YOUR_FATSECRET_API_KEY';
-    var apiSecret = 'YOUR_FATSECRET_API_SECRET';
-  
-    fetch('https://platform.fatsecret.com/rest/server.api?method=foods.search&format=json&search_expression=' + encodeURIComponent(foodName), {
-      method: 'GET',
+  // Функция получения токена доступа FatSecret
+  function getFatSecretToken() {
+    return fetch('https://oauth.fatsecret.com/connect/token', {
+      method: 'POST',
       headers: {
-        'Authorization': 'Bearer ' + apiKey
-      }
+        'Authorization': 'Basic ' + btoa('98526599c876406ea4164afbe448d4fa:006f2301cdf3472a89ec1359f26e243e'), // Замените на твои Client ID и Client Secret
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: 'grant_type=client_credentials&scope=basic'
     })
     .then(response => response.json())
     .then(data => {
-      var food = data.foods.food[0];
-      var calories = food.food_description.match(/(\d+) ккал/)[1];
-      document.getElementById("food-calories").innerText = "Калории: " + calories + " ккал";
-      document.getElementById("food-nutrients").innerText = "Нутриенты: " + food.food_description;
-      saveFoodToFirebase(foodName, calories);
+      return data.access_token;
     })
     .catch(error => {
-      console.error("Ошибка получения данных о питании:", error);
-      alert("Не удалось получить данные о питании. Попробуйте ещё раз.");
+      console.error("Ошибка получения токена FatSecret:", error);
     });
   }
   
-  // Сохранение данных о приёмах пищи в Firebase
-  function saveFoodToFirebase(foodName, calories) {
-    var user = firebase.auth().currentUser;
-    if (!user) return;
-  
-    var foodData = {
-      foodName: foodName,
-      calories: calories,
-      date: new Date().toISOString()
-    };
-  
-    firebase.database().ref('users/' + user.uid + '/meals').push(foodData)
-      .then(() => {
-        alert("Данные о приёме пищи сохранены.");
+  // Функция запроса данных о еде через FatSecret API
+  function fetchFatSecretData(foodName) {
+    getFatSecretToken().then(token => {
+      fetch('https://platform.fatsecret.com/rest/server.api?method=foods.search&format=json&search_expression=' + encodeURIComponent(foodName), {
+        method: 'GET',
+        headers: {
+          'Authorization': 'Bearer ' + token
+        }
       })
-      .catch((error) => {
-        console.error("Ошибка сохранения данных:", error);
-        alert("Не удалось сохранить данные о приёме пищи. Попробуйте ещё раз.");
+      .then(response => response.json())
+      .then(data => {
+        if (data.foods && data.foods.food.length > 0) {
+          var food = data.foods.food[0];
+          var calories = food.food_description.match(/(\d+) ккал/)[1];
+          document.getElementById("food-calories").innerText = "Калории: " + calories + " ккал";
+          document.getElementById("food-nutrients").innerText = "Нутриенты: " + food.food_description;
+        } else {
+          alert("Не удалось найти информацию о продукте.");
+        }
+      })
+      .catch(error => {
+        console.error("Ошибка получения данных о калориях:", error);
       });
+    });
   }
+  
+  // Обработка ошибок (например, если пользователь не вошел)
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (!user && window.location.pathname !== '/index.html') {
+      window.location.href = 'index.html'; // Редирект на страницу входа
+    } else {
+      displayProfile(); // Если пользователь авторизован, отображаем профиль
+    }
+  });
