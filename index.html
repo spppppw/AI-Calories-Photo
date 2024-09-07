@@ -1,42 +1,36 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Анализ питания — Вход или Регистрация</title>
-  <link rel="stylesheet" href="css/style.css">
-  <meta name="description" content="Анализ вашего питания на основе изображений. Зарегистрируйтесь или войдите в систему, чтобы начать следить за своим здоровьем.">
-  <meta name="keywords" content="анализ еды, калории, учет питания, ЗОЖ, анализ изображений">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анализ питания — Вход или Регистрация</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="description" content="Анализ вашего питания на основе изображений. Зарегистрируйтесь или войдите в систему, чтобы начать анализировать вашу еду.">
+    <meta name="keywords" content="анализ еды, калории, учет питания, ЗОЖ, анализ изображений">
 </head>
 <body>
-  <header>
-    <h1>Анализ питания</h1>
-  </header>
+    <header>
+        <h1>Анализ питания</h1>
+    </header>
 
-  <main>
-    <section class="auth-container">
-      <div class="form-wrapper">
-        <form id="login-form" action="dashboard.html" method="POST">
-          <h2>Вход</h2>
-          <div class="input-group">
-            <label for="email-login">Email</label>
-            <input type="email" id="email-login" name="email-login" required>
-          </div>
-          <div class="input-group">
-            <label for="password-login">Пароль</label>
-            <input type="password" id="password-login" name="password-login" required>
-          </div>
-          <button type="submit" class="btn-primary">Войти</button>
-          <p>Нет аккаунта? <a href="register.html">Зарегистрируйтесь</a></p>
-        </form>
-      </div>
-    </section>
-  </main>
+    <main class="auth-container">
+        <h2>Вход</h2>
+        <div class="input-group">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" placeholder="Email">
+        </div>
+        <div class="input-group">
+            <label for="login-password">Пароль</label>
+            <input type="password" id="login-password" placeholder="Пароль">
+        </div>
+        <button class="btn-primary" onclick="login()">Войти</button>
+        <p>Нет аккаунта? <a href="register.html">Зарегистрируйтесь</a></p>
+    </main>
 
-  <footer>
-    <p>&copy; 2024 Анализ питания. Все права защищены.</p>
-  </footer>
+    <footer>
+        <p>© 2024 Анализ питания. Все права защищены.</p>
+    </footer>
 
-  <script src="js/app.js"></script>
+    <script type="module" src="app.js"></script>
 </body>
 </html>
