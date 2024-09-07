@@ -1,41 +1,50 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Регистрация — Анализ питания</title>
-    <link rel="stylesheet" href="css/style.css">
-    <meta name="description" content="Зарегистрируйтесь, чтобы начать анализировать ваше питание на основе изображений.">
-    <meta name="keywords" content="регистрация, учет питания, анализ еды, ЗОЖ, анализ изображений">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Регистрация — Анализ питания</title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="Зарегистрируйтесь, чтобы начать анализировать ваше питание на основе изображений.">
+  <meta name="keywords" content="регистрация, учет питания, анализ еды, ЗОЖ, анализ изображений">
 </head>
 <body>
-    <header>
-        <h1>Регистрация</h1>
-    </header>
+  <header>
+    <h1>Регистрация</h1>
+  </header>
+  
+  <!-- Форма регистрации -->
+  <form>
+    <!-- Поля для имени, email и пароля -->
+    <div class="input-group">
+      <label for="name">Имя</label>
+      <input type="text" id="name" placeholder="Введите ваше имя" required>
+    </div>
+    <div class="input-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Введите ваш email" required>
+    </div>
+    <div class="input-group">
+      <label for="password">Пароль</label>
+      <input type="password" id="password" placeholder="Введите ваш пароль" required>
+    </div>
 
-    <main class="auth-container">
-        <h2>Создание аккаунта</h2>
-        <div class="input-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Email">
-        </div>
-        <div class="input-group">
-            <label for="password">Пароль</label>
-            <input type="password" id="password" placeholder="Пароль">
-        </div>
-        <button class="btn-primary" onclick="register()">Зарегистрироваться</button>
-        <p>Уже есть аккаунт? <a href="index.html">Войдите</a></p>
-        <!-- Добавим кнопки для входа через Google и анонимный вход -->
-<div class="social-auth">
-  <button class="btn-google" onclick="signInWithGoogle()">Войти через Google</button>
-  <button class="btn-anonymous" onclick="signInAnonymously()">Войти анонимно</button>
-</div>
-    </main>
+    <button class="btn-primary" type="submit">Зарегистрироваться</button>
+  </form>
 
-    <footer>
-        <p>© 2024 Анализ питания. Все права защищены.</p>
-    </footer>
+  <!-- Блок для входа через Google и анонимно -->
+  <div class="social-auth">
+    <p>Или войдите через:</p>
+    <button class="btn-google" onclick="signInWithGoogle()">Войти через Google</button>
+    <button class="btn-anonymous" onclick="signInAnonymously()">Войти анонимно</button>
+  </div>
 
-    <script type="module" src="app.js"></script>
+  <p>Уже есть аккаунт? <a href="index.html">Войдите</a></p>
+
+  <footer>
+    <p>© 2024 Анализ питания. Все права защищены.</p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
 </body>
 </html>
