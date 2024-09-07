@@ -3,97 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Анализ еды - Ваш помощник в питании</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-  <script src="app.js" defer></script>
+  <title>Анализ питания — Вход или Регистрация</title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="Анализ вашего питания на основе изображений. Зарегистрируйтесь или войдите в систему, чтобы начать следить за своим здоровьем.">
+  <meta name="keywords" content="анализ еды, калории, учет питания, ЗОЖ, анализ изображений">
 </head>
 <body>
   <header>
-    <nav>
-      <ul>
-        <li><a href="#auth-section">Регистрация</a></li>
-        <li><a href="#profile-section">Профиль</a></li>
-        <li><a href="#calendar-section">История еды</a></li>
-      </ul>
-    </nav>
+    <h1>Анализ питания</h1>
   </header>
 
   <main>
-    <!-- Регистрация и авторизация -->
-    <section id="auth-section" class="auth-container">
-      <div class="auth-form" id="register-form">
-        <h2>Регистрация</h2>
-        <input type="text" id="register-name" placeholder="Имя" required>
-        <input type="email" id="register-email" placeholder="Email" required>
-        <input type="password" id="register-password" placeholder="Пароль" required>
-        <button onclick="register()">Зарегистрироваться</button>
-        <p>Есть аккаунт? <span onclick="toggleAuth()">Вход</span></p>
+    <section class="auth-container">
+      <div class="form-wrapper">
+        <form id="login-form" action="dashboard.html" method="POST">
+          <h2>Вход</h2>
+          <div class="input-group">
+            <label for="email-login">Email</label>
+            <input type="email" id="email-login" name="email-login" required>
+          </div>
+          <div class="input-group">
+            <label for="password-login">Пароль</label>
+            <input type="password" id="password-login" name="password-login" required>
+          </div>
+          <button type="submit" class="btn-primary">Войти</button>
+          <p>Нет аккаунта? <a href="register.html">Зарегистрируйтесь</a></p>
+        </form>
       </div>
-
-      <div class="auth-form hidden" id="login-form">
-        <h2>Вход</h2>
-        <input type="email" id="login-email" placeholder="Email" required>
-        <input type="password" id="login-password" placeholder="Пароль" required>
-        <button onclick="login()">Войти</button>
-        <p>Нет аккаунта? <span onclick="toggleAuth()">Регистрация</span></p>
-      </div>
-      
-      <!-- Сторонняя авторизация -->
-      <div class="social-login">
-        <h3>Войти с помощью</h3>
-        <button onclick="loginWithGoogle()">Google</button>
-        <button onclick="loginWithApple()">Apple</button>
-      </div>
-    </section>
-
-    <!-- Профиль пользователя -->
-    <section id="profile-section" class="hidden profile-container">
-      <div class="profile-header">
-        <h2>Ваш Профиль</h2>
-        <img id="profile-avatar" src="" alt="Аватар" class="avatar">
-        <p id="profile-name"></p>
-        <p id="profile-email"></p>
-        <button onclick="logout()">Выйти</button>
-      </div>
-
-      <!-- Загрузка фото -->
-      <div class="photo-upload">
-        <h3>Загрузите фото еды</h3>
-        <input type="file" accept="image/*" id="food-photo" onchange="uploadPhoto()">
-        <button onclick="analyzeFood()">Анализировать еду</button>
-      </div>
-
-      <!-- Отображение результатов анализа -->
-      <div id="food-info">
-        <h4>Результаты анализа</h4>
-        <p id="food-name"></p>
-        <p id="food-calories"></p>
-        <p id="food-nutrients"></p>
-      </div>
-    </section>
-
-    <!-- Календарь -->
-    <section id="calendar-section" class="calendar-container hidden">
-      <h3>История приёмов пищи</h3>
-      <div id="calendar">
-        <div id="calendar-grid"></div>
-      </div>
-    </section>
-
-    <!-- Информация о приложении -->
-    <section id="about-section" class="about-container">
-      <h3>О приложении</h3>
-      <p>Это веб-приложение помогает вам следить за питанием, анализируя фото еды и предоставляя информацию о её калорийности и составе на основе данных ВОЗ. История приёмов пищи сохраняется для того, чтобы вы могли следить за своим прогрессом и поддерживать здоровый образ жизни.</p>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2024 Анализ еды. Все права защищены.</p>
+    <p>&copy; 2024 Анализ питания. Все права защищены.</p>
   </footer>
 
-  <script src="app.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
