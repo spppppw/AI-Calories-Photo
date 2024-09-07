@@ -1,0 +1,259 @@
+/* Основные стили для всего документа */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Шапка и навигация */
+  header {
+    background-color: #6200ea;
+    color: white;
+    padding: 10px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Общие стили для секций */
+  section {
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Стили для форм авторизации и регистрации */
+  .auth-container {
+    text-align: center;
+  }
+  
+  .auth-form {
+    margin: 20px auto;
+    padding: 20px;
+  }
+  
+  .auth-form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+  
+  .auth-form button {
+    background-color: #6200ea;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+  }
+  
+  .auth-form button:hover {
+    background-color: #3700b3;
+  }
+  
+  .auth-form p {
+    margin-top: 10px;
+  }
+  
+  .auth-form span {
+    color: #6200ea;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  /* Стили для сторонней авторизации */
+  .social-login {
+    margin-top: 20px;
+  }
+  
+  .social-login button {
+    background-color: #fff;
+    color: #6200ea;
+    border: 2px solid #6200ea;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .social-login button:hover {
+    background-color: #6200ea;
+    color: white;
+  }
+  
+  /* Стили профиля пользователя */
+  .profile-container {
+    text-align: center;
+  }
+  
+  .profile-header {
+    margin-bottom: 20px;
+  }
+  
+  .profile-header h2 {
+    margin-bottom: 10px;
+    color: #6200ea;
+  }
+  
+  .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 4px solid #6200ea;
+    margin-bottom: 20px;
+  }
+  
+  .photo-upload h3 {
+    margin-bottom: 10px;
+  }
+  
+  .photo-upload input {
+    margin: 10px 0;
+  }
+  
+  .photo-upload button {
+    background-color: #03dac6;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .photo-upload button:hover {
+    background-color: #018786;
+  }
+  
+  /* Стили для отображения информации о пище */
+  #food-info {
+    background-color: #f4f7fc;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  #food-info h4 {
+    color: #6200ea;
+    margin-bottom: 10px;
+  }
+  
+  #food-info p {
+    margin: 5px 0;
+    font-weight: bold;
+  }
+  
+  /* Стили календаря */
+  .calendar-container {
+    text-align: center;
+  }
+  
+  #calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 10px;
+    margin-top: 20px;
+  }
+  
+  #calendar div {
+    width: 40px;
+    height: 40px;
+    background-color: #03dac6;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #calendar div:hover {
+    background-color: #018786;
+  }
+  
+  /* Стили для футера */
+  footer {
+    background-color: #6200ea;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: auto;
+  }
+  
+  footer p {
+    font-size: 14px;
+    color: #f4f7fc;
+  }
+  
+  /* Адаптивные стили */
+  @media (max-width: 768px) {
+    nav ul {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    section {
+      padding: 20px;
+    }
+  
+    #calendar div {
+      width: 30px;
+      height: 30px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .auth-form input {
+      padding: 10px;
+    }
+  
+    .auth-form button, .social-login button {
+      padding: 10px;
+    }
+  
+    #calendar div {
+      width: 25px;
+      height: 25px;
+    }
+  }
