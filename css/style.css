@@ -1,223 +1,237 @@
 /* Базовые стили */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #f5f5f5;
-  color: #333;
-  line-height: 1.6;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Шапка */
 header {
-  background-color: #2a2a72;
-  color: white;
-  padding: 10px 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #2a2a72;
+    color: white;
+    padding: 10px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
-  font-size: 24px;
-  text-align: center;
+    font-size: 24px;
+    text-align: center;
 }
 
 /* Навигация */
 nav.nav-main ul {
-  display: flex;
-  justify-content: center;
-  list-style: none;
+    display: flex;
+    justify-content: center;
+    list-style: none;
 }
 
 nav.nav-main ul li {
-  margin: 0 10px;
+    margin: 0 10px;
 }
 
 nav.nav-main ul li a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 10px 20px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
 nav.nav-main ul li a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Основные секции */
 main {
-  flex-grow: 1;
-  padding: 20px;
+    flex-grow: 1;
+    padding: 20px;
 }
 
 .auth-container, .profile-container, .calendar-container, .history-container, .settings-container {
-  background-color: white;
-  padding: 20px;
-  margin: 20px auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-  max-width: 400px;
+    background-color: white;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    max-width: 400px;
 }
 
 h2 {
-  font-size: 22px;
-  margin-bottom: 20px;
-  color: #2a2a72;
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #2a2a72;
 }
 
 /* Ввод данных */
 .input-group {
-  margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 
 .input-group label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
 .input-group input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 16px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
 }
 
-button.btn-primary {
-  background-color: #6200ea;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
+/* Кнопки */
+button.btn-primary, button.btn-google, button.btn-anonymous {
+    background-color: #6200ea;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+button.btn-google {
+    background-color: #4285f4;
+}
+
+button.btn-anonymous {
+    background-color: #444;
 }
 
 button.btn-primary:hover {
-  background-color: #3700b3;
+    background-color: #3700b3;
+}
+
+button.btn-google:hover {
+    background-color: #3367d6;
+}
+
+button.btn-anonymous:hover {
+    background-color: #333;
 }
 
 p {
-  margin-top: 10px;
-  font-size: 14px;
-  text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
 }
 
 p a {
-  color: #6200ea;
-  text-decoration: none;
+    color: #6200ea;
+    text-decoration: none;
 }
 
 p a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 /* Стили для аватара */
 .profile-details img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  border: 4px solid #6200ea;
-  margin-bottom: 20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 4px solid #6200ea;
+    margin-bottom: 20px;
 }
 
 .profile-details p {
-  font-size: 16px;
-  margin-bottom: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
 }
 
 /* Календарь */
 #calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-gap: 10px;
-  margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 10px;
+    margin-top: 20px;
 }
 
 #calendar-grid div {
-  background-color: #03dac6;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  border-radius: 8px;
+    background-color: #03dac6;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    border-radius: 8px;
 }
 
 #calendar-grid div:hover {
-  background-color: #018786;
-}
-
-/* Стили для аутентификации через Google и анонимно */
-.social-auth {
-  text-align: center;
-  margin-top: 20px;
-}
-
-button.btn-google, button.btn-anonymous {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-button.btn-google {
-  background-color: #4285f4;
-  color: white;
-}
-
-button.btn-google:hover {
-  background-color: #3367d6;
-}
-
-button.btn-anonymous {
-  background-color: #555555;
-  color: white;
-}
-
-button.btn-anonymous:hover {
-  background-color: #333333;
+    background-color: #018786;
 }
 
 /* Мобильные стили */
 @media (max-width: 768px) {
-  header h1 {
-    font-size: 20px;
-  }
+    header h1 {
+        font-size: 20px;
+    }
 
-  nav.nav-main ul {
-    flex-direction: column;
-  }
+    nav.nav-main ul {
+        flex-direction: column;
+    }
 
-  .auth-container, .profile-container, .calendar-container, .history-container, .settings-container {
-    max-width: 90%;
-    padding: 15px;
-  }
+    .auth-container, .profile-container, .calendar-container, .history-container, .settings-container {
+        max-width: 90%;
+        padding: 15px;
+    }
 
-  #calendar-grid div {
-    height: 30px;
-  }
+    #calendar-grid div {
+        height: 30px;
+    }
 }
 
 /* Футер */
 footer {
-  background-color: #2a2a72;
-  color: white;
-  text-align: center;
-  padding: 10px;
-  font-size: 14px;
+    background-color: #2a2a72;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* Исправление для кнопок Google и анонимного входа */
+button.btn-google, button.btn-anonymous {
+    margin-top: 15px;
+    display: block;
+}
+
+button.btn-google {
+    background-color: #4285f4;
+}
+
+button.btn-google:hover {
+    background-color: #357ae8;
+}
+
+button.btn-anonymous {
+    background-color: #555;
+}
+
+button.btn-anonymous:hover {
+    background-color: #333;
+}
+
+.social-auth {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.social-auth p {
+    margin-bottom: 10px;
 }
